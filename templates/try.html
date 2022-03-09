@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <style>
+            /*apply css properties to body tag*/
+  
+            body {
+                position: absolute;
+                left: 0%;
+                text-align: center;
+            }
+  
+            /*apply css properties to container class*/
+  
+            .container {
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 100%;
+                text-align: center;
+            }
+  
+            /*apply css properties to button tag*/
+  
+            button {
+                width: 90px;
+                height: 60px;
+                font-size: 30px;
+                background-color: green;
+                color: honeydew;
+            }
+  
+            /*apply hover effect to button tag*/
+  
+            button:hover {
+                background-color: greenyellow;
+                color: grey;
+            }
+  
+            /*apply css properties to h2 tag*/
+  
+            h2 {
+                color: black;
+                margin: 0 50px;
+                font-size: 45px;
+            }
+            /*apply css properties to h1 tag*/
+  
+            h1 {
+                font-size: 35px;
+                color: green;
+                text-align: center;
+                padding-left: 10%;
+            }
+        </style>
+    </head>
+  
+    <body>
+        <!-- give a suitable heading using h1 tag-->
+        <h1>Polling</h1>
+  
+        <div class ="container">
+           <form>
+            <!-- <button onclick="incrementn()">nowater</button> -->
+            <input type="radio" id = "nowater" name="level" onclick="incrementn()" value="nowater" required>
+            <label for="html">No Water</label><br>
+            <h2 id="nowater"></h2>
+            <button onclick="incrementf()">foot</button>
+            <h2 id="foot"></h2>
+            <button onclick="incrementk()">knee</button>
+            <h2 id="knee"></h2>
+            <button onclick="incrementh()">hip</button>
+            <h2 id="hip"></h2>
+            <a href="index.html"> 
+            <input type="submit" value="Submit">
+            </a>
+            <!-- <button onclick="decrement()">-</button> -->
+            </form>
+        </div>
+        <!-- JavaScript code-->
+       
+        <script>
+            
+            var data1 = 0;
+            document.getElementById("nowater").innerText = data1;
+            function incrementn() {
+                data1 = data1 + 1;
+                document.getElementById("nowater").innerText = data1;
+            }
+
+            var data2 = 0;
+            document.getElementById("foot").innerText = data2;
+            function incrementf() {
+                datax = data2 + 1;
+                document.getElementById("foot").innerText = datax;
+            }
+
+            var data3 = 0;
+            document.getElementById("knee").innerText = data3;
+            function incrementk() {
+                data3 = data3 + 1;
+                document.getElementById("knee").innerText = data3;
+            }
+
+            var data4 = 0;
+            document.getElementById("hip").innerText = data4;
+            function incrementh() {
+                data4 = data4 + 1;
+                document.getElementById("hip").innerText = data4;
+            }
+            
+        </script>
+    </body>
+</html>

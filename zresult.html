@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style2.css') }}">
+</head>
+<body>
+    <div class="header">
+    <h4>Student Details</h4>
+    </div>
+   
+    <div class="details">
+     <p>Name               :{{result}}</p>
+     <p>Email              :{{result1}}</p>
+     <p>Phone Number       :{{result2}}</p>
+     <p>Hobbies & Interests:{{result3}}</p><br>
+    </div>
+
+    <div class="pic">
+        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/old-books-arranged-on-shelf-royalty-free-image-1572384534.jpg" width="1000" height="500 alt="pic2">
+        </div>
+
+</body>
+</html>

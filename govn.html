@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="poll.js" type="text/javascript"></script>
+    <title>FLOOD MANAGEMENT </title>
+    <!--REQUIRED STYLE SHEETS-->
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLE CSS -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <!--ANIMATED FONTAWESOME STYLE CSS -->
+    <link href="assets/css/font-awesome-animation.css" rel="stylesheet" />
+    <!-- VEGAS STYLE CSS -->
+    <link href="assets/scripts/vegas/jquery.vegas.min.css" rel="stylesheet" />
+    <!-- SIDE MENU STYLE CSS -->
+    <link href="assets/css/component.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Poll UI Design | CodingNepal</title> -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+        ::selection{
+  color: #fff;
+  background: #6665ee;
+}
+img{
+        height: 250px;
+        border-radius: 10px;
+        box-shadow: 0 0 1.2rem rgba(0, 0, 0,0.25);
+        margin: 10px;
+    }
+.wrapper{
+  /* background: #fff; */
+  /* background-color: white; */
+  border-radius: 15px;
+  padding: 25px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+}
+.wrapper header{
+  font-size: 22px;
+  font-weight: 600;
+}
+.wrapper .poll-area{
+  margin: 20px 0 15px 0;
+}
+.poll-area label{
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 8px 15px;
+  border: 2px solid #e6e6e6;
+  /* transition: all 0.2s ease; */
+}
+.poll-area label:hover{
+  border-color: #ddd;
+}
+label.selected{
+  border-color: #6665ee!important;
+}
+label .row{
+  display: flex;
+  pointer-events: none;
+  justify-content: space-between;
+}
+label .row .column{
+  display: flex;
+  align-items: center;
+}
+label .row .circle{
+  height: 19px;
+  width: 19px;
+  display: block;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+}
+label.selected .row .circle{
+  border-color: #6665ee;
+}
+label .row .circle::after{
+  content: "";
+  height: 11px;
+  width: 11px;
+  background: #6665ee;
+  border-radius: inherit;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  display: none;
+}
+.poll-area label:hover .row .circle::after{
+  display: block;
+  background: #e6e6e6;
+}
+label.selected .row .circle::after{
+  display: block;
+  background: #6665ee!important;
+}
+label .row span{
+  font-size: 16px;
+  font-weight: 500;
+}
+label .row .percent{
+  display: none;
+}
+label .progress{
+  height: 7px;
+  width: 100%;
+  position: relative;
+  background: #f0f0f0;
+  margin: 8px 0 3px 0;
+  border-radius: 30px;
+  display: none;
+  pointer-events: none;
+}
+label .progress:after{
+  position: absolute;
+  content: "";
+  height: 100%;
+  background: #ccc;
+  width: calc(1% * var(--w));
+  border-radius: inherit;
+  transition: all 0.2s ease;
+}
+label.selected .progress::after{
+  background: #6665ee;
+}
+label.selectall .progress,
+label.selectall .row .percent{
+  display: block;
+}
+input[type="radio"],
+input[type="checkbox"]{
+  display: none;
+}
+
+    </style>
+
+</head>
+
+<body class="cbp-spmenu-push">
+
+    <!-- MAIN HEADING-->
+    <div class="for-full-back color-bg-one" id="main-sec">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-8 col-md-offset-2 ">
+                    <h1 class="pad-adjust"><i class="fa fa-plus faa-pulse animated"></i>DISASTER MANAGEMENT</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END MAIN HEADING-->
+    <!--LEFT SLIDE MENU-->
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+        <h3>TABS</h3>
+        <!-- <a href="#">For queries, Call: 9876543210</a> -->
+        <a href="index.html"><i class="fa fa-home fa-3x"></i>HOME</a>
+        <a href="#about-sec"><i class="fa fa-globe fa-3x"></i>ABOUT</a>
+        <a href="#contact-sec"><i class="fa fa-phone fa-3x"></i>CONTACT</a>
+        <a href="poll.html"><i class="fa fa-envelope-o fa-3x"></i>POLL</a>
+    </nav>
+
+    <div class="row" id="icon-left">
+        <div class="col-md-12">
+            <i id="showLeftPush" class="fa fa-cut fa-4x faa-horizontal animated "></i>
+        </div>
+    </div>
+    <!--END LEFT SLIDE MENU-->
+
+    <!--RIGHT SLIDE MENU-->
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+        <h3>SOCIALS</h3>
+        <a href="#">Social updates</a>
+        <a href="#"><i class="fa fa-facebook fa-3x"></i>Facebook</a>
+        <a href="#"><i class="fa fa-twitter fa-3x"></i>Twitter</a>
+        <a href="#"><i class="fa fa-linkedin fa-3x"></i>Linked In</a>
+        <a href="#"><i class="fa fa-google-plus fa-3x"></i>Google Plus</a>
+    </nav>
+
+    <div class="row" id="icon-right">
+        <div class="col-md-12">
+            <i id="showRightPush" class="fa fa-paperclip fa-4x "></i>
+        </div>
+    </div>
+    <!--END RIGHT SLIDE MENU-->
+
+    <!--HOME SECTION-->
+    <div class="container" id="home" style="padding-bottom: 200px;">
+        <div class="row text-center">
+            <div class="col-md-12" style="padding-top: 200px;">
+                <h2>.</h2>
+                <span class="head-main">OFFICIAL USE</span>
+                <h2>.</h2>
+                <h3 class="head-last"></h3>
+            </div>
+        </div>
+    </div>
+    <!--END HOME SECTION-->
+
+
+
+    <section class="for-full-back color-bg-one">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-3 ">
+                    <div class="stats-div">
+                        <h3>250+ </h3>
+                        <h2><strong>AREAS CLEARED</strong></h2>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3 ">
+                    <div class="stats-div">
+                        <h3>15+ </h3>
+                        <h2><strong>LIVES SAVED</strong></h2>
+                    </div>
+
+                </div>
+                <div class="col-md-3 ">
+
+                    <div class="stats-div">
+                        <h3>100+ </h3>
+                        <h2><strong> TEAM SAVES </strong></h2>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="stats-div">
+                        <h3>75+ </h3>
+                        <h2><strong>WATER POOLS CLEARED</strong></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--END STATS SECTION-->
+
+        <!--ABOUT SECTION-->
+        <section class="for-full-back color-white " style="padding-bottom: 300px; padding-top: 200px;">
+          <div class="container">
+
+            <div class="container">
+              <br><br>
+              <h1 style="text-align:center;">FLAP Gallery</h1>
+              <form id="form" enctype="multipart/form-data" method="post">
+                  <input type="file" class="form-control" id="image">
+          </div>
+          <div class="form-group">
+              
+              <button class="btn btn-primary">upload</button>
+          </div>
+      </form>
+      <button onclick= "remove()"class="btn btn-danger">remove</button>
+      <div id="result">
+      
+      </div>
+
+
+      <script>
+        var form = document.getElementById('form')
+    
+        var parentDiv = document.getElementById("result")
+    
+        form.addEventListener('submit',function(event)
+        {
+            event.preventDefault()
+    
+            var reader = new FileReader()
+    
+            var name = document.getElementById("image").files[0].name
+    
+            reader.addEventListener('load', function(){
+                if(this.result && localStorage){
+                    window.localStorage.setItem(name,this.result)
+                    alert("Image stored in local storage")
+                    parentDiv.innerHTML = ''
+                    showImages()
+                }
+                else{
+                    alert("not successful")
+                }
+            })
+            
+            reader.readAsDataURL(document.getElementById('image').files[0])
+            console.log(name)
+    
+        })
+    
+        function showImages(){
+            for (let i=0; i < window.localStorage.length; i++)
+            {
+                let res = window.localStorage.getItem(window.localStorage.key(i))
+                var image = new Image()
+                image.src = res; 
+    
+                parentDiv.appendChild(image)
+            }
+        }
+    
+        function remove()
+        {
+            window.localStorage.clear()
+            parentDiv.innerHTML = ''
+        }
+        showImages()
+    
+    </script>
+
+
+
+
+              <!-- <div class="row text-center">
+                  <div class="col-md-8 col-md-offset-2 ">
+                      <h1><i class="fa fa-microphone faa-pulse animated"></i>File upload</h1>
+                  </div>
+                  <div class="row text-center">
+                      <div class="col-md-8 col-md-offset-2 ">
+                          <h4> 	
+                              <form action="/upload.php" method="post" enctype="multipart/form-data">
+                              <label>Username</label>
+                              <input type="text" name="username">
+                              <label>Place</label>
+                              <input type="text" name="username">
+                              <br><br><br><br>
+                              <b><h1 style="font-size: 20px;">Upload Image</h1></b>
+                              <input type="file" name="myfile" id="inputFile" accept="image/jpeg, image/png" style="padding-left: 330px;">
+                            
+                              <br>
+                              <button class='primaryContained float-right' type="submit">Submit</button>
+                              <div class="container">
+                                <br><br>
+                                <h1 style="text-align:center;">javascript Image Gallery</h1>
+                                <form id="form" enctype="multipart/form-data" method="post">
+                                    <input type="file" class="form-control" id="image">
+                            </div>
+                            <div class="form-group">
+                                
+                                <button class="btn btn-primary">upload</button>
+                            </div>
+                        </form>
+                        <button onclick= "remove()"class="btn btn-danger">remove</button>
+                        <div id="result">
+                          </h4>
+                      </div>
+                  </div>
+              </div> -->
+          </div>
+      </section>
+
+    <!--CONTACT SECTION-->
+    <section class="for-full-back color-bg-one" id="contact-sec">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-8 col-md-offset-2 ">
+                    <h1><i class="fa fa-globe faa-pulse animated  "></i>Queries</h1>
+                    <br>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-8 col-md-offset-2 ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="for-full-back color-white " id="contact-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 contact-cls">
+                    <h2>GET IN TOUCH</h2>
+                    <div>
+                        <span><i class="fa fa-home"></i>Address: Chennai</span>
+                        <br />
+                        <span><i class="fa fa-phone"></i>Phone: 9XXXXXXXXX</span>
+                        <br />
+                        <span><i class="fa fa-envelope-o"></i>flap@gmail.com</span>
+                        <br />
+                        <span><i class="fa fa-globe"></i>www.flap.com</span>
+                        <br />
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h4>For emergency requests, reach out to us</h4>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="required" placeholder="Enter here">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="required" placeholder="Enter here">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12 col-sm-12">
+                              <div class="form-group">
+                                  <textarea name="message" id="message" required="required" class="form-control" rows="3" placeholder="Message" style="background-color: white;"></textarea>
+                              </div>
+                              <div class="form-group">
+                                  <button class='primaryContained float-right' type="submit">Submit</button>
+                              </div>
+                          </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--END CONTACT SECTION-->
+
+    <!--FOOTER SECTION -->
+    <div class="for-full-back color-bg-one" id="footer">
+      FLAP | Flood Management | All Right Reserved | Terms | Policies | Licenses 
+
+    </div>
+
+
+
+    <!-- END FOOTER SECTION -->
+
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY  -->
+    <script src="assets/plugins/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP CORE SCRIPT   -->
+    <script src="assets/plugins/bootstrap.js"></script>
+    <!-- SIDE MENU SCRIPTS -->
+    <script src="assets/js/modernizr.govn.js"></script>
+    <script src="assets/js/classie.js"></script>
+    <!-- VEGAS SLIDESHOW SCRIPTS -->
+    <script src="assets/plugins/vegas/jquery.vegas.min.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/govn.js"></script>
+
+<script>
+    const options = document.querySelectorAll("label");
+for (let i = 0; i < options.length; i++) {
+  options[i].addEventListener("click", ()=>{
+    for (let j = 0; j < options.length; j++) {
+      if(options[j].classList.contains("selected")){
+        options[j].classList.remove("selected");
+      }
+    }
+
+    options[i].classList.add("selected");
+    for (let k = 0; k < options.length; k++) {
+      options[k].classList.add("selectall");
+    }
+
+    let forVal = options[i].getAttribute("for");
+    let selectInput = document.querySelector("#"+forVal);
+    let getAtt = selectInput.getAttribute("type");
+    if(getAtt == "checkbox"){
+      selectInput.setAttribute("type", "radio");
+    }else if(selectInput.checked == true){
+      options[i].classList.remove("selected");
+      selectInput.setAttribute("type", "checkbox");
+    }
+
+    let array = [];
+    for (let l = 0; l < options.length; l++) {
+      if(options[l].classList.contains("selected")){
+        array.push(l);
+      }
+    }
+    if(array.length == 0){
+      for (let m = 0; m < options.length; m++) {
+        options[m].removeAttribute("class");
+      }
+    }
+  });
+}
+</script>
+
+<!-- <script>
+var form = document.getElementById('form')
+
+var parentDiv = document.getElementById("result")
+
+form.addEventListener('submit',function(event)
+{
+    event.preventDefault()
+
+    var reader = new FileReader()
+
+    var name = document.getElementById("image").files[0].name
+
+    reader.addEventListener('load', function(){
+        if(this.result && localStorage){
+            window.localStorage.setItem(name,this.result)
+            alert("Image stored in local storage")
+            parentDiv.innerHTML = ''
+            showImages()
+        }
+        else{
+            alert("not successful")
+        }
+    })
+    
+    reader.readAsDataURL(document.getElementById('image').files[0])
+    console.log(name)
+
+})
+
+function showImages(){
+    for (let i=0; i < window.localStorage.length; i++)
+    {
+        let res = window.localStorage.getItem(window.localStorage.key(i))
+        var image = new Image()
+        image.src = res; 
+
+        parentDiv.appendChild(image)
+    }
+}
+
+function remove()
+{
+    window.localStorage.clear()
+    parentDiv.innerHTML = ''
+}
+showImages()
+
+</script> -->
+</body>
+</html>
+
+
